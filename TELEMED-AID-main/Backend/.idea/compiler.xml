@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Service-Discovery" />
+        <module name="Gateway-service" />
+        <module name="VerificationService" />
+      </profile>
+      <profile name="Annotation profile for doctor-service" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
+        </processorPath>
+        <module name="doctor-service" />
+        <module name="appointment-service" />
+      </profile>
+      <profile name="Annotation profile for article-microservice" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath>
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
+        </processorPath>
+        <module name="article-microservice" />
+        <module name="router" />
+        <module name="patient-service" />
+        <module name="authentication-service" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="appointment-service" options="-parameters" />
+      <module name="doctor-service" options="-parameters" />
+      <module name="Gateway-service" options="-parameters" />
+      <module name="Service-Discovery" options="-parameters" />
+      <module name="VerificationService" options="-parameters" />
+      <module name="article-microservice" options="-parameters" />
+      <module name="authentication-service" options="-parameters" />
+      <module name="patient-service" options="-parameters" />
+      <module name="router" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,68 @@
+spring:
+  application:
+    name: "Gateway-service"
+  cloud:
+    config:
+      enabled: false
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins: "${ALLOWED_ORIGINS:http://localhost:3000}"
+            allowed-methods: "*"
+            allowed-headers: "*"
+            allow-credentials: true
+      discovery:
+        locator: true
+      routes:
+        - id: "patient-service"
+          uri: lb://Patient-Service
+          predicates:
+            - Path=/api/patient/**
+        - id: "doctor-service"
+          uri: lb://Doctor-Service
+          predicates:
+            - Path=/api/doctor/**
+        - id: "user-authentication-service"
+          uri: lb://Auth-Service
+          predicates:
+            - Path=/auth/**
+        - id: "ai-chatbot-service"
+          uri: lb://Ai-Chatbot-Service
+          predicates:
+            - Path=/chatbot/**
+        - id: "chatting-service-http"
+          uri: lb://Chatting-Service
+          predicates:
+            - Path=/chat/**
+        - id: chatting-service-ws
+          uri: lb://Chatting-Service
+          predicates:
+            - Path=/ws/**
+        - id: "article-service"
+          uri: lb://Article-Service
+          predicates:
+            - Path=/article/**
+        - id: "appointment-service"
+          uri: lb://Appointment-Service
+          predicates:
+            - Path=/api/appointment/**
+        - id: "notification-service"
+          uri: lb://Notification-Service
+          predicates:
+            - Path=/notification/**
+
+server:
+  port: ${SERVER_PORT:8080}
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+
+jwt:
+  secret-key: ${JWT_SECRET:3cfa76ef14937c1c0ea519f8fc057a80fcd04a7420f8e8bcd0a7567c272e007b}

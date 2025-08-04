@@ -1,0 +1,8 @@
+ctransformers
+sentence-transformers
+langchain
+flask
+flask-cors
+pypdf
+python-dotenv
+langchain_community

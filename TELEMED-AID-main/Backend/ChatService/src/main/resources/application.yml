@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: "Chatting-Service"
+
+  cloud:
+    config:
+      enabled: false
+
+  datasource:
+    url: ${POSTGRES_URL:jdbc:postgresql://localhost:5432/chat}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:mody_aly2020}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  port: 8091
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER:http://localhost:8761/eureka}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
+
+info:
+  app:
+    name: "Chat-service"
+    description: "Chat service"
