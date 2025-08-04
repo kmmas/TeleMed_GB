@@ -36,7 +36,7 @@ endpoints:
     enabled: true
 
 persona:
-  secret-key: ${PERSONA_SECRET_KEY:persona_sandbox_0d767e24-8333-43a3-b73c-15a8e21f7ae0}
+  secret-key: ${}
 
 inquiry:
-  template-id: ${INQUIRY_TEMPLATE_ID:itmpl_HHfacNC4rg2pKAFVmzkgUGbmStoH}
+  template-id: ${}
